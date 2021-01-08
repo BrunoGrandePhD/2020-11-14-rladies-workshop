@@ -39,10 +39,14 @@ vignettes/*.pdf
 .Renviron
 
 # Untrimmed images
-learnr-tutorial/images/ignore/
+/ignore/
 
 # OS files
 .DS_Store
 
 # Output files
 *.html
+learnr-tutorial/learnr-tutorial_files/
+
+# rsconnect files
+*.dcf
