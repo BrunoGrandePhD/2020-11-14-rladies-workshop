@@ -179,9 +179,7 @@ To fulfill this mission we do ask participants to respect a focus on the encoura
 
 Check out the [messy dataset](https://github.com/BrunoGrandePhD/2020-11-14-rladies-workshop/blob/main/learnr-tutorial/messy_penguins.csv) on GitHub!
 
-![](images/palmerpenguins.png)
-
-**Important:** The actual dataset is nice and tidy. I purposely messed it up for this workshop. Don't hold it against the creators of the dataset. 
+**Important:** The actual dataset is nice and tidy. I purposely messed it up for this workshop. Don't hold it against the creators of the dataset. In fact, I probably changed things about it that make zero sense. I do not claim to be a penguin expert; I just find them adorable! 
 
 ![](images/lter_penguins.png)
 
@@ -227,8 +225,6 @@ tidy_penguins <- penguins %>%
 
 colnames(tidy_penguins)
 ```
-
-**Hint:** You may want to check out the documentation for the janitor [`clean_names()`](https://rdrr.io/cran/janitor/man/clean_names.html) function.
 
 ```{r tidy-column-names-2-solution}
 tidy_penguins <- penguins %>%
@@ -332,7 +328,7 @@ tidy_penguins <- penguins %>%
   clean_names(case = "snake") %>% 
   relocate(nickname, .after = sample_number)
 
-head(tidy_penguins$species)
+tidy_penguins["species"]
 ```
 
 ```{r fill-missing-values-1-solution}
@@ -364,7 +360,7 @@ tidy_penguins <- penguins %>%
   relocate(nickname, .after = sample_number) %>% 
   fill(species)
 
-head(tidy_penguins$island)
+tidy_penguins["island"]
 ```
 
 ```{r fill-missing-values-2-solution}
@@ -707,7 +703,7 @@ Different values (_i.e._ `c("FEMALE", "MALE", "F", "f", "female", "male",, "M", 
 > 
 > Tidy the `sex` column such that it only contains one value per sex in addition to `NA`. Consider adding a `unknown` category to catch anything that doesn't match one of your text patterns. Note that the function `quiet_type_convert()` is being used here (and for the rest of the tutorial) to avoid distracting output.
 
-```{r tidy-categories-1, exercise=TRUE}
+```{r tidy-categories-1, exercise=TRUE, exercise.lines=25}
 tidy_penguins <- penguins %>%
   clean_names(case = "snake") %>% 
   relocate(nickname, .after = sample_number) %>% 
@@ -786,7 +782,7 @@ The `stage` column contains two pieces of information: the age group (_i.e._ adu
 > 
 > Split the `stage` column into two: `age_stage` and `egg_stage`.
 
-```{r split-column-1, exercise=TRUE}
+```{r split-column-1, exercise=TRUE, exercise.lines=25}
 tidy_penguins <- penguins %>%
   clean_names(case = "snake") %>% 
   relocate(nickname, .after = sample_number) %>% 
@@ -852,7 +848,7 @@ You may want to check out the `sep` argument for the tidyr [`separate()`](https:
 > 
 > Fix the `egg_stage` column in place (_i.e._ no new column) to only contain the number component.
 
-```{r split-column-2, exercise=TRUE}
+```{r split-column-2, exercise=TRUE, exercise.lines=25}
 tidy_penguins <- penguins %>%
   clean_names(case = "snake") %>% 
   relocate(nickname, .after = sample_number) %>% 
@@ -910,7 +906,7 @@ Once you start visualizing the data, you start seeing obvious outliers (and less
 > 
 > Remove all rows where one of the numeric columns is considered an outlier.
 
-```{r fix-outliers-1, exercise=TRUE}
+```{r fix-outliers-1, exercise=TRUE, exercise.lines=25}
 tidy_penguins <- penguins %>%
   clean_names(case = "snake") %>% 
   relocate(nickname, .after = sample_number) %>% 
@@ -1029,3 +1025,18 @@ Some practical recommendations for preparing data in spreadsheets:
     -   **Citation:** Gorman KB, Williams TD, Fraser WR (2014). Ecological sexual dimorphism and environmental variability within a community of Antarctic penguins (genus Pygoscelis). PLoS ONE 9(3):e90081. https://doi.org/10.1371/journal.pone.0090081
     -   **Package:** Horst AM, Hill AP, Gorman KB (2020). palmerpenguins: Palmer Archipelago (Antarctica) penguin data. R package version 0.1.0. https://allisonhorst.github.io/palmerpenguins/. doi: 10.5281/zenodo.3960218.
 -   Additional artwork (_e.g._ Palmer penguins, cartoons) by @allison_horst
+
+## Colophon
+
+### Setup chunk
+
+```{r, echo=TRUE, eval=FALSE, ref.label="setup"}
+```
+
+### Session info
+
+```{r session-info}
+sessioninfo::session_info()
+```
+
+
